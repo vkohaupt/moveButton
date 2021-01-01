@@ -21,6 +21,11 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
     QPainter painter( this );
     painter.setRenderHints( QPainter::Antialiasing, true );
 
+    button_x = 1;
+    button_y = 1;
+    button_width = width();
+    button_height = height();
+
     if ( isOn == false )
     {
         QPen pen;
@@ -31,10 +36,6 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         QBrush brushButton( Qt::red );
         painter.setBrush( brushButton );
 
-        button_x = 100;
-        button_y = 1;
-        button_width = 90;
-        button_height = 30;
         QRectF rectButton( button_x, button_y, button_width, button_height );
         if ( step > button_width / 2 ) {
             brushButton.setColor( Qt::green );
@@ -63,10 +64,6 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         QBrush brushButton( Qt::green );
         painter.setBrush( brushButton );
 
-        button_x = 100;
-        button_y = 1;
-        button_width = 90;
-        button_height = 30;
         QRectF rectButton( button_x, button_y, button_width, button_height );
         if ( step == 0 )
         {
