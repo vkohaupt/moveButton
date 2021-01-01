@@ -1,6 +1,7 @@
 
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QDebug>
 
 #include "dialog.h"
 #include "QvkMoveButton.h"
@@ -12,20 +13,17 @@ Dialog::Dialog(QWidget *parent)
 
     QvkMoveButton *vkMoveButton = new QvkMoveButton;
     layout->addWidget( vkMoveButton );
-
-    QPushButton *pushButtonOn = new QPushButton();
-    pushButtonOn->setGeometry( 100, 80, 100, 30 );
-    pushButtonOn->setText( "On" );
-    connect( pushButtonOn, SIGNAL( clicked() ), vkMoveButton, SLOT( slot_On() ) );
-    layout->addWidget( pushButtonOn );
-
-    QPushButton *pushButtonOff = new QPushButton();
-    pushButtonOff->setGeometry( 100, 80, 100, 30 );
-    pushButtonOff->setText( "Off" );
-    connect( pushButtonOff, SIGNAL( clicked() ), vkMoveButton, SLOT( slot_Off() ) );
-    layout->addWidget( pushButtonOff );
+    connect( vkMoveButton, SIGNAL( signal_stateON( bool ) ), this, SLOT( slot_XYZ( bool ) ) );
 
     setWindowTitle(tr("MoveButton"));
     resize(300, 200);
 }
 
+void Dialog::slot_XYZ( bool value )
+{
+    if ( value == true )
+        qDebug() << "true";
+
+    if ( value == false )
+        qDebug() << "false";
+}

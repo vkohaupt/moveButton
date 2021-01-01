@@ -5,7 +5,10 @@
 #include <QBasicTimer>
 #include <QWidget>
 
-class QvkMoveButton : public QWidget
+
+#include <QPushButton>
+
+class QvkMoveButton : public QPushButton
 {
     Q_OBJECT
 
@@ -13,12 +16,13 @@ public:
     QvkMoveButton(QWidget *parent = 0);
 
 public slots:
-    void slot_On();
-    void slot_Off();
+    void slot_clicked();
+
 
 protected:
     void paintEvent(QPaintEvent *event) override;
     void timerEvent(QTimerEvent *event) override;
+
 
 private:
     QBasicTimer timer;
@@ -27,6 +31,10 @@ private:
     qreal button_y;
     qreal button_width;
     qreal button_height;
+    bool isOn;
+
+signals:
+    void signal_stateON( bool );
 
 };
 #endif

@@ -10,6 +10,12 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
+
+
+private slots:
+    void slot_XYZ( bool value );
+
+
 };
 
 #endif
