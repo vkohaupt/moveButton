@@ -14,6 +14,7 @@ public:
 
 public slots:
     void slot_On();
+    void slot_Off();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -22,5 +23,10 @@ protected:
 private:
     QBasicTimer timer;
     int step;
+    qreal button_x;
+    qreal button_y;
+    qreal button_width;
+    qreal button_height;
+
 };
 #endif

@@ -26,10 +26,10 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
     QBrush brushButton( Qt::red );
     painter.setBrush( brushButton );
 
-    qreal button_x = 100;
-    qreal button_y = 30;
-    qreal button_width = 90;
-    qreal button_height = 30;
+    button_x = 100;
+    button_y = 30;
+    button_width = 90;
+    button_height = 30;
     QRectF rectButton( button_x, button_y, button_width, button_height );
     if ( step > button_width / 2 - 1 ) {
         brushButton.setColor( Qt::green );
@@ -53,7 +53,7 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
 {
     if ( event->timerId() == timer.timerId() )
     {
-        if ( step < 90 / 2 )
+        if ( step < button_width / 2 )
         {
             step++;
             update();
@@ -74,3 +74,10 @@ void QvkMoveButton::slot_On()
     step = 0;
     timer.start( 10, this);
 }
+
+void QvkMoveButton::slot_Off()
+{
+//    step = 0;
+//    timer.start( 10, this);
+}
+
