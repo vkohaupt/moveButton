@@ -8,18 +8,24 @@
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
 {
-    QvkMoveButton *vkMoveButton = new QvkMoveButton;
-
     QVBoxLayout *layout = new QVBoxLayout(this);
+
+    QvkMoveButton *vkMoveButton = new QvkMoveButton;
     layout->addWidget( vkMoveButton );
 
-    QPushButton *pushButtonStart = new QPushButton();
-    pushButtonStart->setGeometry( 100, 80, 100, 30 );
-    pushButtonStart->setText( "On" );
-    connect( pushButtonStart, SIGNAL( clicked() ), vkMoveButton, SLOT( slot_Start() ) );
-    layout->addWidget( pushButtonStart );
+    QPushButton *pushButtonOn = new QPushButton();
+    pushButtonOn->setGeometry( 100, 80, 100, 30 );
+    pushButtonOn->setText( "On" );
+    connect( pushButtonOn, SIGNAL( clicked() ), vkMoveButton, SLOT( slot_On() ) );
+    layout->addWidget( pushButtonOn );
+
+    QPushButton *pushButtonOff = new QPushButton();
+    pushButtonOff->setGeometry( 100, 80, 100, 30 );
+    pushButtonOff->setText( "Off" );
+    connect( pushButtonOff, SIGNAL( clicked() ), vkMoveButton, SLOT( slot_Off() ) );
+    layout->addWidget( pushButtonOff );
 
     setWindowTitle(tr("MoveButton"));
-    resize(360, 145);
+    resize(300, 200);
 }
 

@@ -69,7 +69,7 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
 }
 
 
-void QvkMoveButton::slot_Start()
+void QvkMoveButton::slot_On()
 {
     step = 0;
     timer.start( 10, this);

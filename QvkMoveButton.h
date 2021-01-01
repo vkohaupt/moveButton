@@ -13,7 +13,7 @@ public:
     QvkMoveButton(QWidget *parent = 0);
 
 public slots:
-    void slot_Start();
+    void slot_On();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
