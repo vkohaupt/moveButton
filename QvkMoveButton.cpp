@@ -3,8 +3,8 @@
 
 #include "QvkMoveButton.h"
 
-QvkMoveButton::QvkMoveButton(QWidget *parent)
-    : QPushButton(parent)
+QvkMoveButton::QvkMoveButton( QWidget *parent )
+    : QPushButton( parent )
 {
     setBackgroundRole( QPalette::Midlight );
     setAutoFillBackground( true );
@@ -21,16 +21,21 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
     QPainter painter( this );
     painter.setRenderHints( QPainter::Antialiasing, true );
 
-    button_x = 1;
-    button_y = 1;
-    button_width = width();
-    button_height = height();
+    qDebug() << x() << y() << width() << height();
+
+    button_x = 2;
+    button_y = 2;
+    button_width = width() - 4;
+    button_height = height() - 4;
+    penWidth = 1;
+    radius = 11;
+    margin = 3;
 
     if ( isOn == false )
     {
         QPen pen;
-        qreal penWidth = 1.0;
         pen.setWidthF( penWidth );
+        pen.setColor( Qt::black );
         painter.setPen( pen );
 
         QBrush brushButton( Qt::red );
@@ -41,23 +46,30 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
             brushButton.setColor( Qt::green );
             painter.setBrush( brushButton );
         }
-        painter.drawRect( rectButton );
+        QPainterPath painterPathButton;
+        painterPathButton.addRoundedRect( rectButton, radius, radius, Qt::AbsoluteSize );
+        painter.drawPath( painterPathButton );
 
-        qreal margin = 3;
-        qreal slider_x = button_width / 2 + button_x;
+        QFont fontOn = painter.font();
+        fontOn.setPixelSize( 20 );
+        painter.setFont( fontOn );
+        painter.drawText( 10, 25, "ON" );
+
+        qreal slider_x = button_width / 3 + button_x;
         qreal slider_y = button_y;
-        qreal slider_width = button_width / 2;
+        qreal slider_width = button_width / 3 * 2;
         qreal slider_height = button_height;
-        QRectF rectSlider( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin);
+        QRectF rectSlider( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
         QBrush brushSlider( Qt::lightGray );
         painter.setBrush( brushSlider );
-        painter.drawRect( rectSlider );
+        QPainterPath painterPathSlider;
+        painterPathSlider.addRoundedRect( rectSlider, radius - margin, radius - margin, Qt::AbsoluteSize );
+        painter.drawPath( painterPathSlider );
     }
 
     if ( isOn == true )
     {
         QPen pen;
-        qreal penWidth = 1.0;
         pen.setWidthF( penWidth );
         painter.setPen( pen );
 
@@ -70,17 +82,25 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
             brushButton.setColor( Qt::red );
             painter.setBrush( brushButton );
         }
-        painter.drawRect( rectButton );
+        QPainterPath painterPathButton;
+        painterPathButton.addRoundedRect( rectButton, radius, radius, Qt::AbsoluteSize );
+        painter.drawPath( painterPathButton );
 
-        qreal margin = 3;
-        qreal slider_x = button_width / 2 + button_x;
+        QFont fontOn = painter.font();
+        fontOn.setPixelSize( 20 );
+        painter.setFont( fontOn );
+        painter.drawText( 80, 25, "OFF" );
+
+        qreal slider_x = button_width / 3;
         qreal slider_y = button_y;
-        qreal slider_width = button_width / 2;
+        qreal slider_width = button_width / 3 * 2;
         qreal slider_height = button_height;
-        QRectF rectSlider( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin);
+        QRectF rectSlider( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
         QBrush brushSlider( Qt::lightGray );
         painter.setBrush( brushSlider );
-        painter.drawRect( rectSlider );
+        QPainterPath painterPathSlider;
+        painterPathSlider.addRoundedRect( rectSlider, radius - margin, radius - margin, Qt::AbsoluteSize );
+        painter.drawPath( painterPathSlider );
     }
 }
 
@@ -91,7 +111,7 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
     {
         if ( isOn == false )
         {
-            if ( step < button_width / 2 )
+            if ( step < button_width / 3 )
             {
                 step++;
                 update();
@@ -99,8 +119,9 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
             else
             {
                 timer.stop();
-                step = button_width / 2;
+                step = button_width / 3;
                 isOn = true;
+                update();
                 emit signal_stateON( isOn );
             }
         }
@@ -117,12 +138,13 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
                 timer.stop();
                 step = 0;
                 isOn = false;
+                update();
                 emit signal_stateON( isOn );
             }
         }
     } else
     {
-        QWidget::timerEvent(event);
+        QWidget::timerEvent( event );
     }
 }
 
@@ -132,3 +154,13 @@ void QvkMoveButton::slot_clicked()
     timer.start( 10, this );
 }
 
+
+void QvkMoveButton::setStatus( bool value )
+{
+    if ( value == true )
+    {
+        isOn = false;
+        slot_clicked();
+    }
+
+}

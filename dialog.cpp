@@ -9,14 +9,19 @@
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+
+    ui.setupUi( this );
 
     QvkMoveButton *vkMoveButton = new QvkMoveButton;
-    layout->addWidget( vkMoveButton );
+    vkMoveButton->setMinimumWidth( 120 );
+    vkMoveButton->setStatus( true );
+
+    ui.horizontalLayout->insertWidget( 0, vkMoveButton );
+
     connect( vkMoveButton, SIGNAL( signal_stateON( bool ) ), this, SLOT( slot_XYZ( bool ) ) );
 
-    setWindowTitle(tr("MoveButton"));
-    resize(300, 200);
+    setWindowTitle( tr( "MoveButton" ) );
+    resize( 300, 200 );
 }
 
 void Dialog::slot_XYZ( bool value )

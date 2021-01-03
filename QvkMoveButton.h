@@ -14,6 +14,7 @@ class QvkMoveButton : public QPushButton
 
 public:
     QvkMoveButton(QWidget *parent = 0);
+    void setStatus( bool value );
 
 public slots:
     void slot_clicked();
@@ -31,6 +32,10 @@ private:
     qreal button_y;
     qreal button_width;
     qreal button_height;
+    qreal penWidth;
+    qreal radius;
+    qreal margin;
+
     bool isOn;
 
 signals:

@@ -4,6 +4,8 @@
 
 #include <QDialog>
 
+#include "ui_dialog.h"
+
 class Dialog : public QDialog
 {
     Q_OBJECT
@@ -11,6 +13,7 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = 0);
 
+    Ui_Dialog ui;
 
 private slots:
     void slot_XYZ( bool value );

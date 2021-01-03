@@ -6,3 +6,6 @@ HEADERS       = QvkMoveButton.h \
 SOURCES       = QvkMoveButton.cpp \
                 dialog.cpp \
                 main.cpp
+
+FORMS += \
+    dialog.ui
