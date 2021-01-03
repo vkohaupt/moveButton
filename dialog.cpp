@@ -13,7 +13,6 @@ Dialog::Dialog(QWidget *parent)
     ui.setupUi( this );
 
     QvkMoveButton *vkMoveButton = new QvkMoveButton;
-    vkMoveButton->setMinimumWidth( 120 );
     vkMoveButton->setStatus( true );
 
     ui.horizontalLayout->insertWidget( 0, vkMoveButton );

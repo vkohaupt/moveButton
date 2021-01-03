@@ -11,6 +11,7 @@ QvkMoveButton::QvkMoveButton( QWidget *parent )
 
     connect( this, SIGNAL( clicked() ), this, SLOT( slot_clicked() ) );
 
+    setMinimumWidth( 120 );
     step = 0;
     isOn = false;
 }
@@ -20,8 +21,6 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
     Q_UNUSED( event );
     QPainter painter( this );
     painter.setRenderHints( QPainter::Antialiasing, true );
-
-    qDebug() << x() << y() << width() << height();
 
     button_x = 2;
     button_y = 2;
