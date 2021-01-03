@@ -1,11 +1,10 @@
 QT += widgets
 
-HEADERS       = QvkMoveButton.h \
-                dialog.h
+HEADERS = dialog.h
 
-SOURCES       = QvkMoveButton.cpp \
-                dialog.cpp \
-                main.cpp
+SOURCES = dialog.cpp \
+          main.cpp
 
-FORMS += \
-    dialog.ui
+FORMS += dialog.ui
+
+include(moveButton/movebutton.pri)
