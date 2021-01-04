@@ -11,6 +11,7 @@ QvkMoveButton::QvkMoveButton( QWidget *parent )
 
     connect( this, SIGNAL( clicked() ), this, SLOT( slot_clicked() ) );
 
+    setObjectName( "moveButtonOnOff" );
     setMinimumWidth( 120 );
     step = 0;
     isOn = false;
@@ -50,10 +51,17 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         painter.drawPath( painterPathButton );
 
         QFont fontOn = painter.font();
-        fontOn.setPixelSize( 20 );
+        fontOn.setPixelSize( 16 );
+        fontOn.setBold( true );
+        QPen penFont;
+        penFont.setColor( Qt::white );
+        painter.setPen( penFont );
         painter.setFont( fontOn );
-        painter.drawText( 10, 25, "ON" );
+        painter.drawText( 10, 23, "OFF" );
 
+        QPen penSlider;
+        penSlider.setColor( Qt::black );
+        painter.setPen( penSlider );
         qreal slider_x = button_width / 3 + button_x;
         qreal slider_y = button_y;
         qreal slider_width = button_width / 3 * 2;
@@ -69,10 +77,11 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
     if ( isOn == true )
     {
         QPen pen;
+        pen.setColor( Qt::black );
         pen.setWidthF( penWidth );
         painter.setPen( pen );
 
-        QBrush brushButton( Qt::green );
+        QBrush brushButton( Qt::darkGreen );
         painter.setBrush( brushButton );
 
         QRectF rectButton( button_x, button_y, button_width, button_height );
@@ -86,10 +95,17 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         painter.drawPath( painterPathButton );
 
         QFont fontOn = painter.font();
-        fontOn.setPixelSize( 20 );
+        fontOn.setPixelSize( 16 );
+        fontOn.setBold( true );
+        QPen penFont;
+        penFont.setColor( Qt::white );
+        painter.setPen( penFont );
         painter.setFont( fontOn );
-        painter.drawText( 80, 25, "OFF" );
+        painter.drawText( 85, 23, "ON" );
 
+        QPen penSlider;
+        penSlider.setColor( Qt::black );
+        painter.setPen( penSlider );
         qreal slider_x = button_width / 3;
         qreal slider_y = button_y;
         qreal slider_width = button_width / 3 * 2;
