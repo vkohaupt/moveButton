@@ -110,7 +110,7 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         qreal slider_y = button_y;
         qreal slider_width = button_width / 3 * 2;
         qreal slider_height = button_height;
-        QRectF rectSlider( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
+        QRectF rectSlider( slider_x + margin - step + 1, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
         QBrush brushSlider( Qt::lightGray );
         painter.setBrush( brushSlider );
         QPainterPath painterPathSlider;
