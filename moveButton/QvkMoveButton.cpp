@@ -33,89 +33,89 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
 
     if ( isOn == false )
     {
-        QPen pen;
-        pen.setWidthF( penWidth );
-        pen.setColor( Qt::black );
-        painter.setPen( pen );
+        QPen penOff;
+        penOff.setWidthF( penWidth );
+        penOff.setColor( Qt::black );
+        painter.setPen( penOff );
 
-        QBrush brushButton( Qt::red );
-        painter.setBrush( brushButton );
+        QBrush brushButtonOn( Qt::red );
+        painter.setBrush( brushButtonOn );
 
-        QRectF rectButton( button_x, button_y, button_width, button_height );
+        QRectF rectButtonOff( button_x, button_y, button_width, button_height );
         if ( step > button_width / 2 ) {
-            brushButton.setColor( Qt::green );
-            painter.setBrush( brushButton );
+            brushButtonOn.setColor( Qt::green );
+            painter.setBrush( brushButtonOn );
         }
-        QPainterPath painterPathButton;
-        painterPathButton.addRoundedRect( rectButton, radius, radius, Qt::AbsoluteSize );
-        painter.drawPath( painterPathButton );
+        QPainterPath painterPathButtonOff;
+        painterPathButtonOff.addRoundedRect( rectButtonOff, radius, radius, Qt::AbsoluteSize );
+        painter.drawPath( painterPathButtonOff );
 
-        QFont fontOn = painter.font();
-        fontOn.setPixelSize( 14 );
-        fontOn.setBold( true );
-        QPen penFont;
-        penFont.setColor( Qt::white );
-        painter.setPen( penFont );
-        painter.setFont( fontOn );
+        QFont fontOff = painter.font();
+        fontOff.setPixelSize( 14 );
+        fontOff.setBold( true );
+        QPen penFontOff;
+        penFontOff.setColor( Qt::white );
+        painter.setPen( penFontOff );
+        painter.setFont( fontOff );
         painter.drawText( 10, 23, "OFF" );
 
-        QPen penSlider;
-        penSlider.setColor( Qt::black );
-        painter.setPen( penSlider );
+        QPen penSliderOff;
+        penSliderOff.setColor( Qt::black );
+        painter.setPen( penSliderOff );
         qreal slider_x = button_width / 3 + button_x;
         qreal slider_y = button_y;
         qreal slider_width = button_width / 3 * 2;
         qreal slider_height = button_height;
-        QRectF rectSlider( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
+        QRectF rectSliderOff( slider_x + margin - step, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
         QBrush brushSlider( Qt::lightGray );
         painter.setBrush( brushSlider );
-        QPainterPath painterPathSlider;
-        painterPathSlider.addRoundedRect( rectSlider, radius - margin, radius - margin, Qt::AbsoluteSize );
-        painter.drawPath( painterPathSlider );
+        QPainterPath painterPathSliderOff;
+        painterPathSliderOff.addRoundedRect( rectSliderOff, radius - margin, radius - margin, Qt::AbsoluteSize );
+        painter.drawPath( painterPathSliderOff );
     }
 
     if ( isOn == true )
     {
-        QPen pen;
-        pen.setColor( Qt::black );
-        pen.setWidthF( penWidth );
-        painter.setPen( pen );
+        QPen penOn;
+        penOn.setColor( Qt::black );
+        penOn.setWidthF( penWidth );
+        painter.setPen( penOn );
 
-        QBrush brushButton( Qt::darkGreen );
-        painter.setBrush( brushButton );
+        QBrush brushButtonOn( Qt::darkGreen );
+        painter.setBrush( brushButtonOn );
 
-        QRectF rectButton( button_x, button_y, button_width, button_height );
+        QRectF rectButtonOn( button_x, button_y, button_width, button_height );
         if ( step == 0 )
         {
-            brushButton.setColor( Qt::red );
-            painter.setBrush( brushButton );
+            brushButtonOn.setColor( Qt::red );
+            painter.setBrush( brushButtonOn );
         }
-        QPainterPath painterPathButton;
-        painterPathButton.addRoundedRect( rectButton, radius, radius, Qt::AbsoluteSize );
-        painter.drawPath( painterPathButton );
+        QPainterPath painterPathButtonOn;
+        painterPathButtonOn.addRoundedRect( rectButtonOn, radius, radius, Qt::AbsoluteSize );
+        painter.drawPath( painterPathButtonOn );
 
         QFont fontOn = painter.font();
         fontOn.setPixelSize( 14 );
         fontOn.setBold( true );
-        QPen penFont;
-        penFont.setColor( Qt::white );
-        painter.setPen( penFont );
+        QPen penFontOn;
+        penFontOn.setColor( Qt::white );
+        painter.setPen( penFontOn );
         painter.setFont( fontOn );
         painter.drawText( 67, 23, "ON" );
 
-        QPen penSlider;
-        penSlider.setColor( Qt::black );
-        painter.setPen( penSlider );
+        QPen penSliderOn;
+        penSliderOn.setColor( Qt::black );
+        painter.setPen( penSliderOn );
         qreal slider_x = button_width / 3;
         qreal slider_y = button_y;
         qreal slider_width = button_width / 3 * 2;
         qreal slider_height = button_height;
-        QRectF rectSlider( slider_x + margin - step + 1, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
+        QRectF rectSliderOn( slider_x + margin - step + 1, slider_y + margin, slider_width - 2 * margin, slider_height - 2 * margin );
         QBrush brushSlider( Qt::lightGray );
         painter.setBrush( brushSlider );
-        QPainterPath painterPathSlider;
-        painterPathSlider.addRoundedRect( rectSlider, radius - margin, radius - margin, Qt::AbsoluteSize );
-        painter.drawPath( painterPathSlider );
+        QPainterPath painterPathSliderOn;
+        painterPathSliderOn.addRoundedRect( rectSliderOn, radius - margin, radius - margin, Qt::AbsoluteSize );
+        painter.drawPath( painterPathSliderOn );
     }
 }
 
