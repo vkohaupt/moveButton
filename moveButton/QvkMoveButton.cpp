@@ -129,14 +129,14 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
             if ( step < button_width / 3 )
             {
                 step++;
-                update();
+                repaint();
             }
             else
             {
                 timer.stop();
                 step = button_width / 3;
                 isOn = true;
-                update();
+                repaint();
                 emit signal_stateON( isOn );
             }
         }
@@ -146,14 +146,14 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
             if ( step > 0 )
             {
                 step--;
-                update();
+                repaint();
             }
             else
             {
                 timer.stop();
                 step = 0;
                 isOn = false;
-                update();
+                repaint();
                 emit signal_stateON( isOn );
             }
         }
@@ -177,5 +177,4 @@ void QvkMoveButton::setStatus( bool value )
         isOn = false;
         slot_clicked();
     }
-
 }
