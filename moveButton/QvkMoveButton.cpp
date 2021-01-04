@@ -3,8 +3,7 @@
 
 #include "QvkMoveButton.h"
 
-QvkMoveButton::QvkMoveButton( QWidget *parent )
-    : QPushButton( parent )
+QvkMoveButton::QvkMoveButton( QWidget *parent ) : QPushButton( parent )
 {
     setBackgroundRole( QPalette::Midlight );
     setAutoFillBackground( true );
@@ -13,8 +12,17 @@ QvkMoveButton::QvkMoveButton( QWidget *parent )
 
     setObjectName( "moveButtonOnOff" );
     setMinimumWidth( 100 );
-    step = 0;
+
     isOn = false;
+    if ( isOn == true )
+    {
+        step = 31;
+    }
+
+    if ( isOn == false )
+    {
+        step = 0;
+    }
 }
 
 void QvkMoveButton::paintEvent( QPaintEvent *event )
@@ -174,7 +182,6 @@ void QvkMoveButton::setStatus( bool value )
 {
     if ( value == true )
     {
-        isOn = false;
         slot_clicked();
     }
 }

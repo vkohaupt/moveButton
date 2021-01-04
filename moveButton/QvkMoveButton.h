@@ -35,7 +35,6 @@ private:
     qreal penWidth;
     qreal radius;
     qreal margin;
-
     bool isOn;
 
 signals:
