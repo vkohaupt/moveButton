@@ -12,7 +12,7 @@ QvkMoveButton::QvkMoveButton( QWidget *parent )
     connect( this, SIGNAL( clicked() ), this, SLOT( slot_clicked() ) );
 
     setObjectName( "moveButtonOnOff" );
-    setMinimumWidth( 120 );
+    setMinimumWidth( 100 );
     step = 0;
     isOn = false;
 }
@@ -24,9 +24,9 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
     painter.setRenderHints( QPainter::Antialiasing, true );
 
     button_x = 2;
-    button_y = 2;
+    button_y = 4;
     button_width = width() - 4;
-    button_height = height() - 4;
+    button_height = height() - 8;
     penWidth = 1;
     radius = 11;
     margin = 3;
@@ -51,7 +51,7 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         painter.drawPath( painterPathButton );
 
         QFont fontOn = painter.font();
-        fontOn.setPixelSize( 16 );
+        fontOn.setPixelSize( 14 );
         fontOn.setBold( true );
         QPen penFont;
         penFont.setColor( Qt::white );
@@ -95,13 +95,13 @@ void QvkMoveButton::paintEvent( QPaintEvent *event )
         painter.drawPath( painterPathButton );
 
         QFont fontOn = painter.font();
-        fontOn.setPixelSize( 16 );
+        fontOn.setPixelSize( 14 );
         fontOn.setBold( true );
         QPen penFont;
         penFont.setColor( Qt::white );
         painter.setPen( penFont );
         painter.setFont( fontOn );
-        painter.drawText( 85, 23, "ON" );
+        painter.drawText( 67, 23, "ON" );
 
         QPen penSlider;
         penSlider.setColor( Qt::black );
