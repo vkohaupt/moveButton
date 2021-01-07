@@ -5,6 +5,7 @@
 
 #include "dialog.h"
 #include "QvkMoveButton.h"
+#include "QvkSpezialCheckbox.h"
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -12,14 +13,22 @@ Dialog::Dialog(QWidget *parent)
 
     ui.setupUi( this );
 
-    QvkMoveButton *vkMoveButton = new QvkMoveButton;
+    QvkSpezialCheckbox *vkSpezialCheckbox = new QvkSpezialCheckbox( this );
+    ui.horizontalLayout->insertWidget( 0, vkSpezialCheckbox );
+    connect( vkSpezialCheckbox, SIGNAL( clicked( bool ) ), this, SLOT( slot_XYZ( bool ) ) );
+
+/*
+    QvkMoveButton *vkMoveButton = new QvkMoveButton( this );
     ui.horizontalLayout->insertWidget( 0, vkMoveButton );
     connect( vkMoveButton, SIGNAL( signal_stateON( bool ) ), this, SLOT( slot_XYZ( bool ) ) );
-//    connect( vkMoveButton, SIGNAL( signal_stateON( bool ) ), this, SLOT( slot_XYZ( bool ) ) );
 //    vkMoveButton->setStatus( true );
 //    vkMoveButton->slot_clicked();
-//    vkMoveButton->clicked();
-qDebug() << "Dialog" << "11111111111111111111111111";
+qDebug() << "000000000000000000000000000000000000000000";
+    vkMoveButton->click();
+qDebug() << "111111111111111111111111111111111111111111";
+*/
+
+
     setWindowTitle( tr( "MoveButton" ) );
     resize( 300, 200 );
 }

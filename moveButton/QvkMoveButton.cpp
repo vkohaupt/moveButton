@@ -147,6 +147,7 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
                 repaint();
                 emit signal_stateON( isOn );
             }
+            return;
         }
 
         if ( isOn == true )
@@ -174,7 +175,9 @@ void QvkMoveButton::timerEvent( QTimerEvent *event )
 
 void QvkMoveButton::slot_clicked()
 {
+qDebug() << "2222222222222222222222222222222222222222222222222222222";
     timer.start( 10, this );
+repaint();
 }
 
 

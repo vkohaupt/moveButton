@@ -8,3 +8,4 @@ SOURCES = dialog.cpp \
 FORMS += dialog.ui
 
 include(moveButton/movebutton.pri)
+include(spezialCheckbox/spezialcheckbox.pri)
