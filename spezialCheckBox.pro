@@ -7,5 +7,7 @@ SOURCES = dialog.cpp \
 
 FORMS += dialog.ui
 
+RESOURCES += spezialCheckBox/spezialCheckBox.qrc
+
 include(moveButton/movebutton.pri)
 include(spezialCheckBox/spezialcheckbox.pri)

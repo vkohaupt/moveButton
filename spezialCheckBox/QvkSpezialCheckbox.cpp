@@ -71,15 +71,11 @@ void QvkSpezialCheckbox::paintChecked( QPainter &painter )
     painterPathSlider.addRoundedRect( rectSlider, radius - margin, radius - margin, Qt::AbsoluteSize );
     painter.drawPath( painterPathSlider );
 
-    QFont font = painter.font();
-    font.setPixelSize( fontPixelSize );
-    font.setBold( true );
-    QPen penFont;
-    penFont.setColor( Qt::white );
-    painter.setPen( penFont );
-    painter.setFont( font );
-    QRectF rectFont( button_x, button_y, button_width / 3, button_height );
-    painter.drawText( rectFont, Qt::AlignCenter, "ON" );
+    QPixmap pixmap( ":/on.png" );
+    pixmap = pixmap.scaled( slider_height / 5 * 3 , slider_height / 5 * 3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    painter.drawPixmap( button_x + margin + ( ( slider_x - button_x - margin ) / 2 ) - ( pixmap.width() / 2 ),
+                        button_y + margin + ( slider_height / 5 ),
+                        pixmap );
 }
 
 
@@ -111,13 +107,9 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
     painterPathSlider.addRoundedRect( rectSlider, radius - margin, radius - margin, Qt::AbsoluteSize );
     painter.drawPath( painterPathSlider );
 
-    QFont font = painter.font();
-    font.setPixelSize( fontPixelSize );
-    font.setBold( true );
-    QPen penFont;
-    penFont.setColor( Qt::white );
-    painter.setPen( penFont );
-    painter.setFont( font );
-    QRectF rectFont( slider_x + slider_width, button_y, button_width / 3, button_height );
-    painter.drawText( rectFont, Qt::AlignCenter, "OFF" );
+    QPixmap pixmap( ":/off.png" );
+    pixmap = pixmap.scaled( slider_height / 5 * 3 , slider_height / 5 * 3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    painter.drawPixmap( button_x + button_width - ( ( button_x + button_width - ( slider_x + slider_width ) ) / 2 ) - pixmap.width() / 2,
+                        button_y + margin + ( slider_height / 5 ),
+                        pixmap );
 }
